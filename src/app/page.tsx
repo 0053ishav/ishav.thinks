@@ -1,6 +1,6 @@
 import MainNav from "@/components/shared/MainNav";
 import HeroSection from "@/components/home/HeroSection";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import Link from "next/link";
 import Image from "next/image";

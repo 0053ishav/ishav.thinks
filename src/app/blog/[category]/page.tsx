@@ -40,7 +40,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </AnimatedSection>
 
       <Grid cols={2}>
-        {posts.map((post, index) => (
+        {posts.map((post) => (
           <Link 
             key={post.slug} 
             href={`/blog/${category}/${post.slug}`}

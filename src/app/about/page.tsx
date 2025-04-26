@@ -8,7 +8,6 @@ import {
   KeyPoint,
   Grid,
   Card,
-  Figure
 } from '@/components/mdx/MdxComponents';
 
 export default function AboutPage() {
