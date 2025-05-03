@@ -5,28 +5,29 @@ import { Container } from "@/components/ui/container";
 import Link from "next/link";
 import Image from "next/image";
 
+
 // Sample featured posts data
 const featuredPosts = [
   {
     title: "What Running Taught Me About Consistency",
     excerpt: "Discover how maintaining a running routine can teach valuable life lessons about consistency and growth.",
-    image: "/images/blog/running.jpg",
+    image: "/images/blog/life/life.jpg",
     category: "Life",
-    slug: "running-consistency-lessons"
+    slug: "life/running-consistency-lessons"
   },
   {
     title: "Understanding Index Funds",
     excerpt: "A beginner's guide to index funds and why they might be the perfect investment choice for you.",
-    image: "/images/blog/finance.jpg",
+    image: "/images/blog/finance/finance.jpg",
     category: "Finance",
-    slug: "understanding-index-funds"
+    slug: "finance/understanding-index-funds"
   },
   {
-    title: "The Power of Daily Habits",
-    excerpt: "How small, consistent actions can lead to remarkable changes in your life and mindset.",
-    image: "/images/blog/habits.jpg",
-    category: "Productivity",
-    slug: "power-of-daily-habits"
+    title: "Ai Introduction",
+    excerpt: "How AI is reshaping industries and human experiences in 2024 and beyond.",
+    image: "/images/blog/ai/ai.jpg",
+    category: "AI",
+    slug: "ai/ai-introduction"
   }
 ];
 
@@ -63,7 +64,8 @@ export default function Home() {
                         src={post.image}
                         alt={post.title}
                         fill
-                        className="object-cover transform transition-all duration-500 ease-in-out hover:scale-110"
+                         sizes="(max-width: 768px) 100vw, 33vw"
+    className="object-cover transform transition-all duration-500 ease-in-out hover:scale-110"
                       />
                     </div>
                     <CardHeader>
@@ -89,7 +91,7 @@ export default function Home() {
         </section>
 
         {/* Categories */}
-        <section className="border-t bg-muted/50 py-16">
+        <section className="border-t  py-16">
           <Container>
             <h2 className="mb-8 text-center text-2xl font-bold tracking-tight">
               Explore by Category

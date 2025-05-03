@@ -6,36 +6,42 @@ import { cn } from '@/lib/utils';
 import * as MdxComponents from '@/components/mdx/MdxComponents';
 import { BlogTimeline } from '@/components/blog/BlogTimeline';
 
-interface BlogPostPageProps {
+// Define the PageProps type
+interface PageProps {
   params: {
     category: string;
     slug: string;
   };
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  // Validate and process category parameter
-  if (!params?.category) {
+const BlogPostPage = async ({ params }: PageProps) => {
+  // Check if category and slug exist
+  if (!params?.category || !params?.slug) {
     notFound();
+    return;
   }
 
+  // Decode category and ensure the post exists
   const category = decodeURIComponent(params.category).toLowerCase();
   const post = await getBlogPost(category, params.slug);
 
   if (!post) {
     notFound();
+    return;
   }
 
+  // Fetch compiled content and related posts concurrently
   const [content, categoryPosts] = await Promise.all([
     getCompiledMDX(post.content, {
-      components: MdxComponents
+      components: MdxComponents,
     }),
-    getBlogPostsByCategory(category)
+    getBlogPostsByCategory(category),
   ]);
 
   // If no posts found in category, show 404
   if (categoryPosts.length === 0) {
     notFound();
+    return;
   }
 
   return (
@@ -69,18 +75,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <time dateTime={post.date}>{post.date}</time>
             </div>
           </header>
-          <div className={cn(
-            "prose prose-lg",
-            "prose-headings:text-foreground prose-p:text-foreground",
-            "prose-strong:text-foreground dark:prose-strong:text-foreground",
-            "prose-a:text-primary prose-a:no-underline hover:prose-a:underline",
-            "prose-li:text-foreground",
-            "prose-pre:bg-muted prose-pre:border prose-pre:border-border",
-            "prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none",
-            "prose-blockquote:text-foreground/80 prose-blockquote:border-l-primary",
-            "prose-hr:border-border",
-            "dark:prose-invert dark:prose-p:text-foreground dark:prose-headings:text-foreground"
-          )}>
+          <div
+            className={cn(
+              'prose prose-lg',
+              'prose-headings:text-foreground prose-p:text-foreground',
+              'prose-strong:text-foreground dark:prose-strong:text-foreground',
+              'prose-a:text-primary prose-a:no-underline hover:prose-a:underline',
+              'prose-li:text-foreground',
+              'prose-pre:bg-muted prose-pre:border prose-pre:border-border',
+              'prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none',
+              'prose-blockquote:text-foreground/80 prose-blockquote:border-l-primary',
+              'prose-hr:border-border',
+              'dark:prose-invert dark:prose-p:text-foreground dark:prose-headings:text-foreground'
+            )}
+          >
             {content}
           </div>
         </article>
@@ -90,4 +98,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
     </div>
   );
-} 
+};
+
+export default BlogPostPage;

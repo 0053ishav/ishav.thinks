@@ -16,6 +16,9 @@ const eslintConfig = [
     rules: {
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": ["error"],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "react/react-in-jsx-scope": "off",
     },
   },
 ];
