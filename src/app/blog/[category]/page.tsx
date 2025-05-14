@@ -38,14 +38,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {categoryDescriptions[category as keyof typeof categoryDescriptions]}
         </P>
       </AnimatedSection>
-
       <Grid cols={2}>
         {posts.map((post) => (
-          <Link 
-            key={post.slug} 
+          <Link
+            key={post.slug}
             href={`/blog/${category}/${post.slug}`}
             className="block"
-          >
+             >
             <Card className="h-full transition-transform hover:scale-[1.02]">
               {post.coverImage && (
                 <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-lg">

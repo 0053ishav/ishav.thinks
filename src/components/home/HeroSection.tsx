@@ -35,7 +35,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="font-serif text-5xl font-bold tracking-tight text-foreground sm:text-7xl"
           >
-            Welcome to ishav.thinks
+            Welcome to  ishavThinks
           </motion.h1>
 
           <motion.p
@@ -54,7 +54,7 @@ const HeroSection = () => {
             className="flex items-center justify-center gap-x-6"
           >
             <Button asChild size="lg">
-              <Link href="/blog">Start Exploring</Link>
+              <Link href="/blog"  >Start Exploring</Link>
             </Button>
           </motion.div>
 
@@ -82,7 +82,7 @@ const HeroSection = () => {
                 key={post.href}
                 href={post.href}
                 className="p-4 bg-muted/20 rounded-xl shadow hover:bg-muted transition-all duration-300"
-              >
+                 >
                 <h3 className="font-semibold text-md text-foreground">
                   {post.title}
                 </h3>

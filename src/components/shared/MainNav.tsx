@@ -27,7 +27,7 @@ const MainNav = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="font-mono text-xl font-bold">ishavthinks</span>
+            <span className="font-mono text-xl font-bold">ishavThinks</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,7 +36,7 @@ const MainNav = () => {
               <NavigationMenuList className="flex items-center gap-1">
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.href}>
-                    <Link href={item.href} legacyBehavior passHref>
+                    <Link href={item.href}   passHref>
                       <NavigationMenuLink className="group gap-3 inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                         {item.title } {item.icon}
                       </NavigationMenuLink>
@@ -91,7 +91,7 @@ const MainNav = () => {
                       href={item.href}
                       className="text-sm font-medium transition-colors hover:text-primary"
                       onClick={() => setIsOpen(false)}
-                    >
+                       >
                       {item.title}
                     </Link>
                   ))}

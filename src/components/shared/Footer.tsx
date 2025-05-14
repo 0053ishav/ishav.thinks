@@ -11,10 +11,10 @@ const Footer = () => {
             {/* Brand Section */}
             <div className="col-span-2 md:col-span-1">
               <Link href="/" className="text-xl font-bold text-foreground">
-                Ishav.Thinks
+                 ishavThinks
               </Link>
               <p className="mt-4 text-sm text-muted-foreground">
-                Exploring life's journey through words, wisdom, and wonder.
+                Exploring life&apos;s journey through words, wisdom, and wonder.
               </p>
             </div>
 

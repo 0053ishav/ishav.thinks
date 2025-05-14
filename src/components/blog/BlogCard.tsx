@@ -23,7 +23,10 @@ export default function BlogCard({
   author,
 }: BlogCardProps) {
   return (
-    <Link href={`/blog/${category.toLowerCase()}/${slug}`} className="block h-full">
+    <Link
+      href={`/blog/${category.toLowerCase()}/${slug}`}
+      className="block h-full"
+       >
       <Card className="h-full overflow-hidden transition-all transform duration-300 ease-in-out hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/40 border border-transparent">
         {coverImage && (
           <div className="relative aspect-video w-full overflow-hidden transition-transform duration-500 ease-in-out transform hover:scale-105">

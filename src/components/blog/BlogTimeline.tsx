@@ -55,7 +55,6 @@ export function BlogTimeline({ posts, currentPost }: BlogTimelineProps) {
           </Link>
         )}
       </div>
-
       <div className="relative space-y-6 max-h-[calc(100vh-12rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-border">
         {sortedYears.map((year) => (
           <div key={year} className="space-y-2">
@@ -75,7 +74,7 @@ export function BlogTimeline({ posts, currentPost }: BlogTimelineProps) {
                           ? "text-primary font-medium"
                           : "text-muted-foreground"
                       )}
-                    >
+                       >
                       {post.title}
                     </Link>
                   ))}

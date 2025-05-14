@@ -1,48 +1,35 @@
-import * as React from 'react';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import * as React from 'react';
+
 import { getBlogPost, getCompiledMDX, getBlogPostsByCategory } from '@/lib/mdx';
-import { cn } from '@/lib/utils';
 import * as MdxComponents from '@/components/mdx/MdxComponents';
 import { BlogTimeline } from '@/components/blog/BlogTimeline';
+import { cn } from '@/lib/utils';
 
-// Define the PageProps type
-interface PageProps {
+interface BlogPostPageProps {
   params: {
     category: string;
     slug: string;
   };
 }
 
-const BlogPostPage = async ({ params }: PageProps) => {
-  // Check if category and slug exist
-  if (!params?.category || !params?.slug) {
-    notFound();
-    return;
-  }
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { category, slug } = params;
 
-  // Decode category and ensure the post exists
-  const category = decodeURIComponent(params.category).toLowerCase();
-  const post = await getBlogPost(category, params.slug);
+  if (!category || !slug) notFound();
 
-  if (!post) {
-    notFound();
-    return;
-  }
+  const decodedCategory = decodeURIComponent(category).toLowerCase();
+  const post = await getBlogPost(decodedCategory, slug);
 
-  // Fetch compiled content and related posts concurrently
-  const [content, categoryPosts] = await Promise.all([
-    getCompiledMDX(post.content, {
-      components: MdxComponents,
-    }),
-    getBlogPostsByCategory(category),
+  if (!post) notFound();
+
+  const [content, relatedPosts] = await Promise.all([
+    getCompiledMDX(post.content, { components: MdxComponents }),
+    getBlogPostsByCategory(decodedCategory),
   ]);
 
-  // If no posts found in category, show 404
-  if (categoryPosts.length === 0) {
-    notFound();
-    return;
-  }
+  if (!relatedPosts || relatedPosts.length === 0) notFound();
 
   return (
     <div className="container mx-auto">
@@ -93,11 +80,9 @@ const BlogPostPage = async ({ params }: PageProps) => {
           </div>
         </article>
         <aside>
-          <BlogTimeline posts={categoryPosts} currentPost={post} />
+          <BlogTimeline posts={relatedPosts} currentPost={post} />
         </aside>
       </div>
     </div>
   );
-};
-
-export default BlogPostPage;
+}

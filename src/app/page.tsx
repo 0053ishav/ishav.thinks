@@ -34,9 +34,10 @@ const featuredPosts = [
 const categories = [
   { name: "Life", href: "/blog/life" },
   { name: "Finance", href: "/blog/finance" },
-  { name: "Productivity", href: "/blog/productivity" },
-  { name: "Mindset", href: "/blog/mindset" },
-  { name: "Culture", href: "/blog/culture" }
+  { name: "AI", href: "/blog/ai" },
+  // { name: "Productivity", href: "/blog/productivity" },
+  // { name: "Mindset", href: "/blog/mindset" },
+  // { name: "Culture", href: "/blog/culture" }
 ];
 
 export default function Home() {
@@ -102,7 +103,7 @@ export default function Home() {
                   key={category.href}
                   href={category.href}
                   className="inline-flex items-center rounded-full border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:scale-105"
-                >
+                   >
                   {category.name}
                 </Link>
               ))}
